@@ -20,40 +20,15 @@
  * 
  * 
  */
-
-/*
-Matplotlib link instructions:
-Compile with folowing flags:
--I/usr/include/python2.7 -lpython2.7
-*/
-
-//#include "matplotlibcpp.h"
-#include <stdlib.h>
-#include <math.h>
-//#include "cores.h"
-//#include "structures.h"
-#include <omp.h>
-//#include "integration.h"
-#include <string>
-//#include "planet_data.h"
+#pragma once
+#include <iostream>
 #include <fstream>
-#include <ctime>
-#include <stdio.h>
-#include "menu.h"
-#include "parser.h" 
-#include "exit_codes.h"
-//using namespace solar_system;
 
-#define INVALID_ALGORTIHM -1
-
-
-
-/*
-Initiating the simulation
-*/
-int main(){
-  spawn_menu();
-  open_files(read,write);//calling the open_files() function
-  close_files(read,write);//calling the close_files() function
-  return EXIT_SUCCESS;
-}
+//global scope variables
+extern std::string s;
+extern std::ifstream read;
+extern std::ofstream write;
+//Prototype function declarations
+void open_files(std::ifstream&,std::ofstream&);
+void process_data(std::ifstream&,std::ofstream&);
+void close_files(std::ifstream&,std::ofstream&);

@@ -1,5 +1,5 @@
 /*
- * main.cpp
+ * exit_codes.cpp
  * 
  * Copyright 2019 Miquel Bernat Laporta i Granados <mlaportaigranados@gmail.com>
  * 
@@ -20,40 +20,11 @@
  * 
  * 
  */
-
-/*
-Matplotlib link instructions:
-Compile with folowing flags:
--I/usr/include/python2.7 -lpython2.7
-*/
-
-//#include "matplotlibcpp.h"
-#include <stdlib.h>
-#include <math.h>
-//#include "cores.h"
-//#include "structures.h"
-#include <omp.h>
-//#include "integration.h"
-#include <string>
-//#include "planet_data.h"
-#include <fstream>
-#include <ctime>
-#include <stdio.h>
-#include "menu.h"
-#include "parser.h" 
 #include "exit_codes.h"
-//using namespace solar_system;
+#include <iostream>
 
-#define INVALID_ALGORTIHM -1
-
-
-
-/*
-Initiating the simulation
-*/
-int main(){
-  spawn_menu();
-  open_files(read,write);//calling the open_files() function
-  close_files(read,write);//calling the close_files() function
-  return EXIT_SUCCESS;
+void error_message(std::string msg)//this is for printing the error message.
+{
+	std::cerr<<msg<<std::endl;
+	exit(EXIT_FAILURE);
 }
