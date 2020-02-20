@@ -42,6 +42,7 @@ Compile with folowing flags:
 #include "menu.h"
 #include "parser.h" 
 #include "exit_codes.h"
+#include "benchmark.h"
 //using namespace solar_system;
 
 #define INVALID_ALGORTIHM -1
@@ -52,8 +53,18 @@ Compile with folowing flags:
 Initiating the simulation
 */
 int main(){
+  /*
   spawn_menu();
   open_files(read,write);//calling the open_files() function
   close_files(read,write);//calling the close_files() function
   return EXIT_SUCCESS;
+  */
+  int value = 0;
+  {
+        Timer timer1;
+        for (int i=0; i<1000000; i++)
+            value +=2;
+
+    }
+    std::cout << value << std::endl;
 }
