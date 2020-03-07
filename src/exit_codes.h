@@ -21,6 +21,9 @@
  * 
  */
 
-#include <iostream>
+void error_message(std::string msg)//this is for printing the error message.
+{
+	std::cerr<<msg<<std::endl;
+	exit(EXIT_FAILURE);
+}
 
-void error_message(std::string msg);
