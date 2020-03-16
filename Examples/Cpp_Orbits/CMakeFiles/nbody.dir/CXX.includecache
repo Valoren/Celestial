@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/datastructures.h
+string
+-
+vector
+-
+
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/orbit_integration.cpp
+math.h
+-
+datastructures.h
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/datastructures.h
+orbit_integration.h
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/orbit_integration.h
+
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/orbit_integration.h
+iostream
+-
+fstream
+-
+datastructures.h
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/datastructures.h
+
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/simulation.cpp
+orbit_integration.h
+/home/miquel/Desktop/Celestial/Examples/Cpp_Orbits/orbit_integration.h
+
