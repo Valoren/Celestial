@@ -1,7 +1,8 @@
 /*
  * exit_codes.h
  * 
- * Copyright 2019 Miquel Bernat Laporta i Granados <mlaportaigranados@gmail.com>
+ * Copyright 2019 Miquel Bernat Laporta i Granados 
+ * <mlaportaigranados@gmail.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

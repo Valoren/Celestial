@@ -1,9 +1,9 @@
 /*
- * main.cpp
+ * integration.h
  * 
  * Copyright 2019 Miquel Bernat Laporta i Granados 
  * <mlaportaigranados@gmail.com>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -22,34 +22,32 @@
  * 
  */
 
+#pragma once
+
+#include "structures.h"
+
 /*
-Matplotlib link instructions:
-Compile with folowing flags:
--I/usr/include/python2.7 -lpython2.7
+*NAMESPACE: Integration_Algorithms
+* 
+*DESCRIPTION: Defines basic integration algorithms for the integration.
+*
 */
+namespace Integration_Algorithms
+{
 
-//#include "matplotlibcpp.h"
-//#include "cores.h"
-#include <stdlib.h>
-#include <math.h>
-#include <omp.h>
+class Integrator
+{
+	public:
+	
+	point calculate_single_body_acceleration(int);
+	void compute_velocity();
+	void update_location();
+	void compute_gravity_step();
+    std::vector<body> &get_bodies();
+    std::vector<body> bodies;
+	
 
-#include "include/structures.h"
-#include "include/integration.h"
-#include "include/planet_data.h"
-#include "include/menu.h"
-#include "include/parser.h" 
-#include "include/exit_codes.h"
-#include "include/benchmark.h"
-//using namespace solar_system;
-
-
-int main(){
-  {
-  Timer timer;
-  spawn_menu();
-  //open_files(read,write);//calling the open_files() function
-  //close_files(read,write);//calling the close_files() function
-  }
-  return 0;
+};
 }
+
+

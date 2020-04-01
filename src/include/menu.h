@@ -22,8 +22,9 @@
  */
 
 #pragma once
+
 #include <iostream>
-//#include "integration.h"
+#include "integration.h"
 
 typedef void (*Menu_Processing_Function_Pointer)(void);
 
@@ -45,14 +46,20 @@ void Process_Selection_Two(){
 
 static const Menu_Option main_menu[] =
 {
-  {'1', "Algorithm_1", Process_Selection_One},
-  {'2', "Algorithm_2", Process_Selection_Two},
-  {'3', "Algorithm_3",Process_Selection_Two}
+  {'1', "Euler first order", Process_Selection_One},
+  {'2', "Runge Kutta 4th order", Process_Selection_Two},
+  {'3', "Runge Kutta-Fehlberg 5th order", Process_Selection_Two}
 };
 
 static const size_t quantity_selections =
     sizeof(main_menu) / sizeof(main_menu[0]);
 
+/*
+*PROCEDURE: spawn_title
+* 
+*DESCRIPTION: Writes basic information on program execution
+*
+*/
 void spawn_title(){
     std::cout << "-----------------------------------------\n" << std::endl;
     std::cout << "Celestial\n" << std::endl;
@@ -62,6 +69,13 @@ void spawn_title(){
     std::cout << "-----------------------------------------\n" << std::endl;
 }
 
+/*
+*PROCEDURE: spawn_menu
+* 
+*DESCRIPTION: Spawns menu and prompts aviable integration algorithms for the user 
+*to choose from
+*
+*/
 void spawn_menu(){
   spawn_title();
   for (size_t i = 0; i < quantity_selections; ++i)
