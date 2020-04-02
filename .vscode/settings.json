@@ -2,6 +2,7 @@
     "files.associations": {
         "*.tcc": "cpp",
         "chrono": "cpp",
-        "nbody_sh1.C": "cpp"
+        "nbody_sh1.C": "cpp",
+        "cstdlib": "cpp"
     }
 }

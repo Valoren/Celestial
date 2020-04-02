@@ -24,8 +24,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "exit_codes.h"
-#include "parser.h"
+#include "include/exit_codes.h"
+#include "include/parser.h"
 using namespace std;
 
 std::string s;

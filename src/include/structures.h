@@ -32,13 +32,6 @@
 #include <algorithm>
 #include <iomanip>
 
-//Global scope variables used on the integration
-const double Grav_const = 6.667e-11;
-double timeStep;
-double Cycles;
-double integration_time;
-int num_bodies;
-
 /*
  * 	Struct: Point
  * 
@@ -119,7 +112,7 @@ const point ORIGIN{0.0, 0.0, 0.0};
  * 
  * OBJECTS: Name, position, velocity, acceleration, mass and radius
 */
-typedef struct body{
+struct body{
 
 	point location;
 	double mass;

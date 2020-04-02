@@ -28,23 +28,18 @@ Compile with folowing flags:
 -I/usr/include/python2.7 -lpython2.7
 */
 
-//#include "matplotlibcpp.h"
-//#include "cores.h"
-#include <stdlib.h>
-#include <math.h>
+#include <cmath>
 #include <omp.h>
-
 #include "include/structures.h"
 #include "include/integration.h"
 #include "include/planet_data.h"
 #include "include/menu.h"
-#include "include/parser.h" 
-#include "include/exit_codes.h"
 #include "include/benchmark.h"
-//using namespace solar_system;
-
+//#include "matplotlibcpp.h"
 
 int main(){
+
+  number_of_cores();
   {
   Timer timer;
   spawn_menu();
