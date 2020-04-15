@@ -51,7 +51,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/miquel/Desktop/Celestial
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miquel/Desktop/Celestial
+CMAKE_BINARY_DIR = /home/miquel/Desktop/Celestial/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquel/Desktop/Celestial/CMakeFiles /home/miquel/Desktop/Celestial/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquel/Desktop/Celestial/cmake-build-debug/CMakeFiles /home/miquel/Desktop/Celestial/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquel/Desktop/Celestial/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquel/Desktop/Celestial/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

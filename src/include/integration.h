@@ -32,7 +32,7 @@
 *DESCRIPTION: Defines basic integration algorithms for the integration.
 *
 */
-namespace Integration_Algorithms
+namespace General_Integration_Algorithms
 {
 
 class Integrator
@@ -50,4 +50,39 @@ class Integrator
 };
 }
 
+
+/*
+*NAMESPACE: Two_Body_Algorithms
+* 
+*DESCRIPTION: Defines special algorithms for use with 2 body 
+*systems only.
+*
+*/
+namespace Two_Body_Algorithms
+{
+
+class F_and_G
+{
+	public:
+
+	point calculate_single_body_acceleration(int);
+	void compute_velocity();
+	void update_location();
+	void compute_gravity_step();
+    std::vector<body> &get_bodies();
+    std::vector<body> bodies;
+};
+
+class Taylor_Series
+{
+	public:
+
+	point calculate_single_body_acceleration(int);
+	void compute_velocity();
+	void update_location();
+	void compute_gravity_step();
+    std::vector<body> &get_bodies();
+    std::vector<body> bodies;
+};
+}
 

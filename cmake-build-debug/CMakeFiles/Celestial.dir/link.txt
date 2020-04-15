@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Celestial.dir/src/main.cpp.o CMakeFiles/Celestial.dir/src/parser.cpp.o  -o Celestial 

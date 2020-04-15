@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Celestial"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Celestial">
+				<Option output="/home/miquel/Desktop/Celestial/Celestial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/miquel/Desktop/Celestial/src/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 Celestial"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Celestial/fast">
+				<Option output="/home/miquel/Desktop/Celestial/Celestial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/miquel/Desktop/Celestial/src/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 Celestial/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/benchmark.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/exit_codes.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/integration.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/menu.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/parser.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/planet_data.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/structures.h">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/main.cpp">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/parser.cpp">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

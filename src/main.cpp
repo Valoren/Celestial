@@ -28,6 +28,7 @@ Compile with folowing flags:
 -I/usr/include/python2.7 -lpython2.7
 */
 
+#include <iostream>
 #include <cmath>
 #include <omp.h>
 #include "include/structures.h"
@@ -35,16 +36,25 @@ Compile with folowing flags:
 #include "include/planet_data.h"
 #include "include/menu.h"
 #include "include/benchmark.h"
+#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
 int main(){
 
-  number_of_cores();
-  {
-  Timer timer;
-  spawn_menu();
-  //open_files(read,write);//calling the open_files() function
-  //close_files(read,write);//calling the close_files() function
-  }
-  return 0;
+    std::cout<< sqrt(2.0)<< std::endl;
+    number_of_cores();
+
+    {
+
+        Timer timer;
+        
+        spawn_menu();
+
+        //open_files(read,write);//calling the open_files() function
+
+        //close_files(read,write);//calling the close_files() function
+
+    }
+
+    return 0;
 }
