@@ -69,7 +69,7 @@ Timer::Timer(){
 /*
 *PROCEDURE: number_of_cores
 *
-*DESCRIPTION: Displays number of processing cores aviable on the system
+*DESCRIPTION: Detects system OS and displays number of processing cores aviable on the system
 *Main purpose is for multithreading optimization with OMP library.
 *
 */
@@ -80,12 +80,14 @@ void number_of_cores()
 #ifdef _WIN32
 #ifndef _SC_NPROCESSORS_ONLN
 SYSTEM_INFO info;
+printf("Detected Windows system\n");
 GetSystemInfo(&info);
 #define sysconf(a) info.dwNumberOfProcessors
 #define _SC_NPROCESSORS_ONLN
 #endif
 #endif
 #ifdef _SC_NPROCESSORS_ONLN
+printf("Detected GNU-Linux system");
   nprocs = sysconf(_SC_NPROCESSORS_ONLN);
   if (nprocs < 1)
   {
