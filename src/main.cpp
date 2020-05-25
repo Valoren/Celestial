@@ -36,7 +36,7 @@ Compile with folowing flags:
 #include "include/planet_data.h"
 #include "include/menu.h"
 #include "include/benchmark.h"
-#include "include/astro_epochs.h"
+//#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
 int main(){

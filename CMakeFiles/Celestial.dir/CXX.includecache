@@ -22,8 +22,6 @@ errno.h
 chrono
 -
 
-/home/miquel/Desktop/Celestial/src/include/exit_codes.h
-
 /home/miquel/Desktop/Celestial/src/include/integration.h
 structures.h
 /home/miquel/Desktop/Celestial/src/include/structures.h
@@ -33,12 +31,6 @@ iostream
 -
 integration.h
 /home/miquel/Desktop/Celestial/src/include/integration.h
-
-/home/miquel/Desktop/Celestial/src/include/parser.h
-iostream
--
-fstream
--
 
 /home/miquel/Desktop/Celestial/src/include/planet_data.h
 structures.h
@@ -77,16 +69,4 @@ include/menu.h
 /home/miquel/Desktop/Celestial/src/include/menu.h
 include/benchmark.h
 /home/miquel/Desktop/Celestial/src/include/benchmark.h
-
-/home/miquel/Desktop/Celestial/src/parser.cpp
-iostream
--
-string
--
-fstream
--
-include/exit_codes.h
-/home/miquel/Desktop/Celestial/src/include/exit_codes.h
-include/parser.h
-/home/miquel/Desktop/Celestial/src/include/parser.h
 

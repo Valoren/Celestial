@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/miquel/Desktop/Celestial/src/main.cpp" "/home/miquel/Desktop/Celestial/CMakeFiles/Celestial.dir/src/main.cpp.o"
-  "/home/miquel/Desktop/Celestial/src/parser.cpp" "/home/miquel/Desktop/Celestial/CMakeFiles/Celestial.dir/src/parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

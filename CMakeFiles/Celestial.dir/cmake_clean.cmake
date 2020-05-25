@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Celestial.dir/src/main.cpp.o"
-  "CMakeFiles/Celestial.dir/src/parser.cpp.o"
   "Celestial"
   "Celestial.pdb"
 )
