@@ -27,6 +27,16 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/miquel/Desktop/Celestial"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="Celestial">
 				<Option output="/home/miquel/Desktop/Celestial/Celestial" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/miquel/Desktop/Celestial"/>
@@ -59,42 +69,17 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/miquel/Desktop/Celestial"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/miquel/Desktop/Celestial/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 		</Build>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/benchmark.h">
+		<Unit filename="/home/miquel/Desktop/Celestial/src/ephelib.cpp">
 			<Option target="Celestial"/>
 		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/exit_codes.h">
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/astro_constants.h">
 			<Option target="Celestial"/>
 		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/integration.h">
-			<Option target="Celestial"/>
-		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/menu.h">
-			<Option target="Celestial"/>
-		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/parser.h">
-			<Option target="Celestial"/>
-		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/planet_data.h">
-			<Option target="Celestial"/>
-		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/include/structures.h">
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/ephelib.h">
 			<Option target="Celestial"/>
 		</Unit>
 		<Unit filename="/home/miquel/Desktop/Celestial/src/main.cpp">
-			<Option target="Celestial"/>
-		</Unit>
-		<Unit filename="/home/miquel/Desktop/Celestial/src/parser.cpp">
 			<Option target="Celestial"/>
 		</Unit>
 		<Unit filename="/home/miquel/Desktop/Celestial/CMakeLists.txt">

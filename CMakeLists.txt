@@ -10,4 +10,4 @@ set (source_dir "${PROJECT_SOURCE_DIR}/src/")
 
 file (GLOB source_files "${source_dir}/main.cpp")
 
-add_executable(Celestial ${source_files})
+add_executable(Celestial ${source_files} src/include/astro_constants.h src/ephelib.cpp src/include/ephelib.h)

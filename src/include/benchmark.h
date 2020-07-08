@@ -38,7 +38,6 @@
 
 class Timer
 {
-
 public:
       Timer();
       ~Timer();

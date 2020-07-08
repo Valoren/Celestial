@@ -26,7 +26,7 @@
 #include <iostream>
 #include "integration.h"
 
-typedef void (*Menu_Processing_Function_Pointer)(void);
+typedef void (*Menu_Processing_Function_Pointer)();
 
 struct Menu_Option
 {
@@ -78,18 +78,18 @@ void spawn_title(){
 */
 void spawn_menu(){
   spawn_title();
-  for (size_t i = 0; i < quantity_selections; ++i)
+  for (const auto & i : main_menu)
   {
-    std::cout << main_menu[i].p_selection_text << "\n";
+    std::cout << i.p_selection_text << "\n";
   }
   std::cout << "Enter selection, 0 to quit: ";
   char choice;
   std::cin >> choice;
-  for (size_t i = 0; i < quantity_selections; ++i)
+  for (const auto & i : main_menu)
   {
-     if (choice == main_menu[i].choice)
+     if (choice == i.choice)
      {
-       Menu_Processing_Function_Pointer p_function = main_menu[i].p_processing_function;
+       Menu_Processing_Function_Pointer p_function = i.p_processing_function;
        (p_function)();
        break;
      }

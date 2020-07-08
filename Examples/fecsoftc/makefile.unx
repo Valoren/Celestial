@@ -1,0 +1,141 @@
+
+INCLUDE=
+LIBS= -lm
+CC=gcc
+
+# For normal use
+#CFLAGS=-ansi -pedantic -Wall -s -O
+# For debugging
+CFLAGS=-ansi -pedantic -Wall -g
+
+TARGETS = asc2eph ephinfo ephtest sephem eph geobs jdtest nuttest \
+  pretran rigorous rpnmat sidtest tspp coords eleprec rise
+
+# Now the actual rules
+
+all: $(TARGETS)
+
+clean:
+	-rm *.o
+	-rm *.log
+	-rm $(TARGETS)
+
+
+asc2eph: asc2eph.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o asc2eph asc2eph.o astrocon.o support.o $(LIBS)
+
+ephinfo: ephinfo.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o ephinfo ephinfo.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+ephtest: ephtest.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o ephtest ephtest.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+sephem: sephem.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o sephem sephem.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+eph: eph.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o eph eph.o astrolib.o astrocon.o support.o $(LIBS)
+
+geobs: geobs.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o geobs geobs.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+jdtest: jdtest.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o jdtest jdtest.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+nuttest: nuttest.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o nuttest nuttest.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+pretran: pretran.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o pretran pretran.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+rigorous: rigorous.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o rigorous rigorous.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+rpnmat: rpnmat.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o rpnmat rpnmat.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+sidtest: sidtest.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o sidtest sidtest.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+tspp: tspp.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o tspp tspp.o astrolib.o astrocon.o support.o $(LIBS)
+
+coords: coords.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o coords coords.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+eleprec: eleprec.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o eleprec eleprec.o astrolib.o astrocon.o \
+	support.o $(LIBS)
+
+rise: rise.o astrolib.o astrocon.o support.o
+	$(CC) $(CFLAGS) -o rise rise.o astrolib.o astrocon.o support.o $(LIBS)
+
+
+
+asc2eph.o: asc2eph.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c asc2eph.c
+
+ephinfo.o: ephinfo.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c ephinfo.c
+
+ephtest.o: ephtest.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c ephtest.c
+
+sephem.o: sephem.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c sephem.c
+
+astrolib.o: astrolib.c astrolib.h astrocon.h support.h
+	$(CC) $(CFLAGS) -c astrolib.c
+
+astrocon.o: astrocon.c astrocon.h
+	$(CC) $(CFLAGS) -c astrocon.c
+
+support.o: support.c support.h
+	$(CC) $(CFLAGS) -c support.c
+
+eph.o: eph.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c eph.c
+
+geobs.o: geobs.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c geobs.c
+
+jdtest.o: jdtest.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c jdtest.c
+
+nuttest.o: nuttest.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c nuttest.c
+
+pretran.o: pretran.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c pretran.c
+
+rigorous.o: rigorous.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c rigorous.c
+
+rpnmat.o: rpnmat.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c rpnmat.c
+
+sidtest.o: sidtest.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c sidtest.c
+
+tspp.o: tspp.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c tspp.c
+
+coords.o: coords.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c coords.c
+
+eleprec.o: eleprec.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c eleprec.c
+
+rise.o: rise.c astrolib.h support.h
+	$(CC) $(CFLAGS) -c rise.c

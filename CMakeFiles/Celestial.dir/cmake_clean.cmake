@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Celestial.dir/src/ephelib.cpp.o"
   "CMakeFiles/Celestial.dir/src/main.cpp.o"
   "Celestial"
   "Celestial.pdb"
