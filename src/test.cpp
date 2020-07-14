@@ -8,7 +8,8 @@ using namespace std;
 using namespace Two_Body_Algorithms;
 
 int main(){
-    calculate_single_body_acceleration();
+    Integrator body;
+    body.calculate_single_body_acceleration(1);
     euler_forward();
     return 0;
 }

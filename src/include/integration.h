@@ -25,6 +25,9 @@
 #pragma once
 
 #include "structures.h"
+#include "planet_data.h"
+
+using namespace solar_system;
 
 /*
 *CLASS: Integrator
@@ -36,13 +39,13 @@ class Integrator
 {
 public:
 
-    void calculate_single_body_acceleration(int);
+    static void calculate_single_body_acceleration(int);
     void compute_velocity();
     void update_location();
     void compute_gravity_step();
     std::vector<body> &get_bodies();
     std::vector<body> bodies;
-    calculate_single_body_acceleration() = default; // <---- constructor por defecto
+
 
 };
 
@@ -91,12 +94,12 @@ namespace Two_Body_Algorithms {
     void euler_forward(){
         double r[3], v[3], a[3];
         double dt = 0.00000001;
-        r[0] = 1;
-        r[1] = 0;
-        r[2] = 0;
-        v[0] = 0;
-        v[1] = 0.5;
-        v[2] = 0;
+        r[0] = test_object.location.x;
+        r[1] = test_object.location.y;
+        r[2] = test_object.location.z;
+        v[0] = test_object.velocity.x;
+        v[1] = test_object.velocity.y;
+        v[2] = test_object.velocity.z;
         double dt_out = 0.01;
         double t_out = dt_out;
         for (double t = 0; t < 10; t += dt) {
