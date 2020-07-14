@@ -27,6 +27,31 @@
 #include "structures.h"
 
 /*
+*CLASS: Integrator
+*
+*DESCRIPTION: Encapsulates all basic integration algorithms.
+*
+*/
+class Integrator
+{
+public:
+
+    void calculate_single_body_acceleration(int);
+    void compute_velocity();
+    void update_location();
+    void compute_gravity_step();
+    std::vector<body> &get_bodies();
+    std::vector<body> bodies;
+    calculate_single_body_acceleration() = default; // <---- constructor por defecto
+
+};
+
+void  Integrator::calculate_single_body_acceleration(int) {
+    std::cout << "Hola" << std::endl;
+
+}
+
+/*
 *NAMESPACE: Integration_Algorithms
 * 
 *DESCRIPTION: Defines basic integration algorithms for the integration.
@@ -35,19 +60,6 @@
 namespace General_Integration_Algorithms
 {
 
-class Integrator
-{
-	public:
-	
-	point calculate_single_body_acceleration(int);
-	void compute_velocity();
-	void update_location();
-	void compute_gravity_step();
-    std::vector<body> &get_bodies();
-    std::vector<body> bodies;
-	
-
-};
 }
 
 
@@ -58,31 +70,48 @@ class Integrator
 *systems only.
 *
 */
-namespace Two_Body_Algorithms
-{
+namespace Two_Body_Algorithms {
 
-class F_and_G
-{
-	public:
+    void F_and_G(){
 
-	point calculate_single_body_acceleration(int);
-	void compute_velocity();
-	void update_location();
-	void compute_gravity_step();
-    std::vector<body> &get_bodies();
-    std::vector<body> bodies;
-};
 
-class Taylor_Series
-{
-	public:
+        point calculate_single_body_acceleration(int);
 
-	point calculate_single_body_acceleration(int);
-	void compute_velocity();
-	void update_location();
-	void compute_gravity_step();
-    std::vector<body> &get_bodies();
-    std::vector<body> bodies;
-};
+        void compute_velocity();
+
+        void update_location();
+
+        void compute_gravity_step();
+
+        std::vector<body> &get_bodies();
+
+        std::vector<body> bodies;
+    }
+
+    void euler_forward(){
+        double r[3], v[3], a[3];
+        double dt = 0.00000001;
+        r[0] = 1;
+        r[1] = 0;
+        r[2] = 0;
+        v[0] = 0;
+        v[1] = 0.5;
+        v[2] = 0;
+        double dt_out = 0.01;
+        double t_out = dt_out;
+        for (double t = 0; t < 10; t += dt) {
+            double r2 = r[0] * r[0] + r[1] * r[1] + r[2] * r[2];
+            for (int k = 0; k < 3; k++)a[k] = -r[k] / (r2 * sqrt(r2));
+            for (int k = 0; k < 3; k++) {
+                r[k] += v[k] * dt;
+                v[k] += a[k] * dt;
+            }
+            if (t >= t_out) {
+                std::cout << r[0] << " " << r[1] << " " << r[2] << " ";
+                std::cout << v[0] << " " << v[1] << " " << v[2] << std::endl;
+                t_out += dt_out;
+            }
+        }
+
+    }
 }
-

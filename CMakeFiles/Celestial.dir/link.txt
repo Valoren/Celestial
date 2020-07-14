@@ -1,1 +1,3 @@
-/usr/bin/c++   -Wall -Werror -std=c++17 -lm -g   CMakeFiles/Celestial.dir/src/main.cpp.o CMakeFiles/Celestial.dir/src/ephelib.cpp.o  -o Celestial 
+"D:\CLion 2020.1.1\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Celestial.dir/objects.a
+D:\MinGW\bin\ar.exe cr CMakeFiles\Celestial.dir/objects.a @CMakeFiles\Celestial.dir\objects1.rsp
+D:\MinGW\bin\g++.exe  -Wall -Werror -std=c++17 -lm -g   -Wl,--whole-archive CMakeFiles\Celestial.dir/objects.a -Wl,--no-whole-archive  -o Celestial.exe -Wl,--out-implib,libCelestial.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Celestial.dir\linklibs.rsp
