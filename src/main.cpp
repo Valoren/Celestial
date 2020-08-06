@@ -41,15 +41,14 @@ Compile with folowing flags:
 
 int main(){
 
-    std::cout<< sqrt(2.0)<< std::endl;
-    number_of_cores();
 
+    number_of_cores();
     {
 
         Timer timer;
         
-        spawn_menu();
-
+        //spawn_menu();
+        Two_Body_Algorithms::F_and_G();
         //open_files(read,write);//calling the open_files() function
 
         //close_files(read,write);//calling the close_files() function

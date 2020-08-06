@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Celestial.dir/src/ephelib.cpp.obj"
-  "CMakeFiles/Celestial.dir/src/main.cpp.obj"
-  "Celestial.exe"
-  "Celestial.exe.manifest"
+  "CMakeFiles/Celestial.dir/src/integration.cpp.o"
+  "CMakeFiles/Celestial.dir/src/main.cpp.o"
+  "Celestial"
   "Celestial.pdb"
-  "libCelestial.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

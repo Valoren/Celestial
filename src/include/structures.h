@@ -76,7 +76,7 @@ struct point
 		return point{ x, y, z };
 	}
 
-	point operator-(point a)
+	point operator-(point a) const
 	{
 		return point{ x - a.x, y - a.y, z - a.z };
 	}
@@ -99,7 +99,7 @@ double norm(point f){
  * 
  *DESCRIPTION: Calculates scalar product of 2 cartesian Vectors
  * 
- * RETURNS: scalar product(double)
+ *RETURNS: scalar product(double)
  */
 double scalar(point a, point g){
   return a.x * g.x + a.y * g.y + a.z * g.z;

@@ -116,7 +116,7 @@ void Orbit_integration::RK4::compute_velocity()
 		point acceleration = Orbit_integration::RK4::calculate_single_body_acceleration(i);
 		m_bodies[i].velocity += acceleration * m_time_step;
 	}
-};
+}
 
 void Orbit_integration::RK4::update_location()
 {

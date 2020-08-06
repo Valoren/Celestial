@@ -26,45 +26,77 @@
 
 #include "structures.h"
 #include "planet_data.h"
+#define NUMBER_OF_STEPS 100
 
 using namespace solar_system;
 
+static const double dt = 0.00000001;
+
+/*
+*NAMESPACE: Orbit integration
+*
+*DESCRIPTION: Defines basic integration algorithms for the integration.
+*
+*/
+namespace Orbit_integration {
 /*
 *CLASS: Integrator
 *
 *DESCRIPTION: Encapsulates all basic integration algorithms.
 *
 */
-class Integrator
-{
-public:
+    class Integrator {
+    public:
+        virtual void compute_gravity_step() = 0;
+        virtual std::vector<body> &get_bodies() = 0;
+    };
 
-    static void calculate_single_body_acceleration(int);
-    void compute_velocity();
-    void update_location();
-    void compute_gravity_step();
-    std::vector<body> &get_bodies();
-    std::vector<body> bodies;
+    class Euler : virtual Integrator {
+    public:
+        Euler(std::vector<body> bodies, double time_step = 1) :
+                m_bodies(bodies),
+                m_time_step(time_step) {};
 
+        std::vector<body> &get_bodies() { return m_bodies; };
 
-};
+        void compute_gravity_step();
 
-void  Integrator::calculate_single_body_acceleration(int) {
-    std::cout << "Hola" << std::endl;
+    private:
+        point calculate_single_body_acceleration(int);
 
+        void compute_velocity();
+
+        void update_location();
+
+    protected:
+        std::vector<body> m_bodies;
+        double m_time_step;
+    };
+
+    class RK4 : virtual public Integrator {
+    public:
+        RK4(std::vector<body> bodies, double time_step = 1) :
+                m_bodies(bodies),
+                m_time_step(time_step) {};
+
+        std::vector<body> &get_bodies() { return m_bodies; };
+
+        void compute_gravity_step();
+
+    private:
+        point calculate_single_body_acceleration(int);
+
+        point partial_step(point &, point &, double);
+
+        void compute_velocity();
+
+        void update_location();
+
+    protected:
+        std::vector<body> m_bodies;
+        double m_time_step;
+    };
 }
-
-/*
-*NAMESPACE: Integration_Algorithms
-* 
-*DESCRIPTION: Defines basic integration algorithms for the integration.
-*
-*/
-namespace General_Integration_Algorithms
-{
-
-}
-
 
 /*
 *NAMESPACE: Two_Body_Algorithms
@@ -73,48 +105,51 @@ namespace General_Integration_Algorithms
 *systems only.
 *
 */
-namespace Two_Body_Algorithms {
+namespace Two_Body_Algorithms
+{
+    class Integrator {
+    public:
+        virtual void compute_gravity_step() = 0;
+        virtual std::vector<body> &get_bodies() = 0;
+    };
 
-    void F_and_G(){
+    class Leapfrog: virtual Integrator{
+        Leapfrog(std::vector<body> bodies, double time_step = 1) :
+        m_bodies(bodies),
+        m_time_step(time_step) {};
 
+        std::vector<body> &get_bodies() { return m_bodies; };
 
-        point calculate_single_body_acceleration(int);
+        void compute_gravity_step();
+
+    private:
+        point calculate_single_body_acceleration(int){
+            point acceleration{ 0, 0, 0 };
+            body target_body = [test_object, origin];
+
+            int index = 0;
+
+            for (auto external_body = m_bodies.begin(); external_body != m_bodies.end(); *external_body++, index++)
+            {
+                if (index != body_index)
+                {
+                    double r = (pow((target_body.location.x - external_body->location.x), 2) + pow((target_body.location.y - external_body->location.y), 2) + pow((target_body.location.z - external_body->location.z), 2));
+                    r = sqrt(r);
+                    auto tmp = G_const * external_body->mass / (r*r*r);
+                    acceleration = acceleration + (external_body->location - target_body.location) * tmp;
+                }
+            }
+            return acceleration;
+        }
 
         void compute_velocity();
 
         void update_location();
 
-        void compute_gravity_step();
+    protected:
+        std::vector<body> m_bodies;
+        double m_time_step;
 
-        std::vector<body> &get_bodies();
+    };
 
-        std::vector<body> bodies;
-    }
-
-    void euler_forward(){
-        double r[3], v[3], a[3];
-        double dt = 0.00000001;
-        r[0] = test_object.location.x;
-        r[1] = test_object.location.y;
-        r[2] = test_object.location.z;
-        v[0] = test_object.velocity.x;
-        v[1] = test_object.velocity.y;
-        v[2] = test_object.velocity.z;
-        double dt_out = 0.01;
-        double t_out = dt_out;
-        for (double t = 0; t < 10; t += dt) {
-            double r2 = r[0] * r[0] + r[1] * r[1] + r[2] * r[2];
-            for (int k = 0; k < 3; k++)a[k] = -r[k] / (r2 * sqrt(r2));
-            for (int k = 0; k < 3; k++) {
-                r[k] += v[k] * dt;
-                v[k] += a[k] * dt;
-            }
-            if (t >= t_out) {
-                std::cout << r[0] << " " << r[1] << " " << r[2] << " ";
-                std::cout << v[0] << " " << v[1] << " " << v[2] << std::endl;
-                t_out += dt_out;
-            }
-        }
-
-    }
 }

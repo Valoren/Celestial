@@ -36,7 +36,7 @@
 namespace solar_system
 {
 
-constexpr double G = 6.673e-11;
+constexpr double G_const = 6.67408e-11; //m3 kg - 1 s - 2
 
 // location(x, y, z), mass, radius, velocity(x, y, z), full_name
 static body sun{ ORIGIN, 1.989e30, 695700000, ORIGIN, "Sun"};
@@ -60,4 +60,8 @@ static body neptune = {{-4444450000000, 0.0, 0.0}, 102.413e24, 24341000,{0.0, -5
 static body pluto = {{5906376272000, 0.0, 0.0}, 1.30900e22, 1188300,{0.0, -4760, 0.0}, "Pluto"};
 
 static body test_object = {{1, 0, 0}, 1, 1, {0, 0.5, 0}, "0B545"};
+
+static body f_g_test = {{0.1693419, -0.3559908, -0.2077172}, 0.00000016, 1, {1.1837591, 0.06097770, 0.2349312}, "F_G_TEST"};
+
+static body origin = {{0.0, 0.0, 0.0}, 1, 695700000, {0.0, 0.0, 0.0}, "origin"};
 }

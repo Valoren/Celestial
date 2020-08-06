@@ -38,16 +38,16 @@ struct Menu_Option
 //Dummy functions for testing menu options
 
 void Process_Selection_One(){
-    std::cout << "Hello World" << std::endl;
-};
+    Two_Body_Algorithms::euler_forward();
+}
 void Process_Selection_Two(){
-    std::cout << "Hola" << std::endl;
-};
+    Two_Body_Algorithms::F_and_G();
+}
 
 static const Menu_Option main_menu[] =
 {
-  {'1', "Euler first order", Process_Selection_One},
-  {'2', "Runge Kutta 4th order", Process_Selection_Two},
+  {'1', "Euler first order for 2 body systems", Process_Selection_One},
+  {'2', "F and G series for 2 body systems", Process_Selection_Two},
   {'3', "Runge Kutta-Fehlberg 5th order", Process_Selection_Two}
 };
 
