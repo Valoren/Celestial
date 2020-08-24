@@ -26,11 +26,46 @@
 
 #include "structures.h"
 #include "planet_data.h"
-#define NUMBER_OF_STEPS 100
 
 using namespace solar_system;
 
 static const double dt = 0.00000001;
+
+std::vector<body> bodies;
+
+
+static void record_state(std::vector<body>& bodies)
+{
+    for (auto body_iterator = bodies.begin(); body_iterator != bodies.end(); *body_iterator++)
+    {
+        body_iterator->locations.push_back(body_iterator->location);
+    }
+}
+
+static void output_states(const std::vector<body>& body_locations)
+{
+
+    for (auto body_iterator = body_locations.begin(); body_iterator != body_locations.end(); *body_iterator++)
+    {
+        std::ofstream f;
+        f.open(body_iterator->name + ".dat");
+        f << body_iterator->name << std::endl;
+        f.close();
+    }
+
+    for (auto body_iterator = body_locations.begin(); body_iterator != body_locations.end(); *body_iterator++)
+    {
+        std::ofstream f;
+        f.open(body_iterator->name + ".dat", std::ofstream::out | std::ofstream::app);
+        for (auto location = body_iterator->locations.begin(); location < body_iterator->locations.end(); *location++)
+        {
+            f << location->x << ","
+              << location->y << ","
+              << location->z << std::endl;
+        }
+        f.close();
+    }
+}
 
 /*
 *NAMESPACE: Orbit integration
@@ -76,7 +111,7 @@ namespace Orbit_integration {
     class RK4 : virtual public Integrator {
     public:
         RK4(std::vector<body> bodies, double time_step = 1) :
-                m_bodies(bodies),
+                m_bodies(std::move(bodies)),
                 m_time_step(time_step) {};
 
         std::vector<body> &get_bodies() { return m_bodies; };
@@ -105,51 +140,19 @@ namespace Orbit_integration {
 *systems only.
 *
 */
-namespace Two_Body_Algorithms
+namespace two_body_algorithms{
+    void f_and_g();
+    void euler_forward();
+}
+
+template <typename Integrator>
+void run_simulation(Integrator integrator, int iterations, int report_frequency)
 {
-    class Integrator {
-    public:
-        virtual void compute_gravity_step() = 0;
-        virtual std::vector<body> &get_bodies() = 0;
-    };
-
-    class Leapfrog: virtual Integrator{
-        Leapfrog(std::vector<body> bodies, double time_step = 1) :
-        m_bodies(bodies),
-        m_time_step(time_step) {};
-
-        std::vector<body> &get_bodies() { return m_bodies; };
-
-        void compute_gravity_step();
-
-    private:
-        point calculate_single_body_acceleration(int){
-            point acceleration{ 0, 0, 0 };
-            body target_body = [test_object, origin];
-
-            int index = 0;
-
-            for (auto external_body = m_bodies.begin(); external_body != m_bodies.end(); *external_body++, index++)
-            {
-                if (index != body_index)
-                {
-                    double r = (pow((target_body.location.x - external_body->location.x), 2) + pow((target_body.location.y - external_body->location.y), 2) + pow((target_body.location.z - external_body->location.z), 2));
-                    r = sqrt(r);
-                    auto tmp = G_const * external_body->mass / (r*r*r);
-                    acceleration = acceleration + (external_body->location - target_body.location) * tmp;
-                }
-            }
-            return acceleration;
-        }
-
-        void compute_velocity();
-
-        void update_location();
-
-    protected:
-        std::vector<body> m_bodies;
-        double m_time_step;
-
-    };
-
+    for (auto i = 0; i < iterations; i++)
+    {
+        if (i % report_frequency == 0)
+            record_state(integrator.get_bodies());
+        integrator.compute_gravity_step();
+    }
+    output_states(integrator.get_bodies());
 }

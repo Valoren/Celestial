@@ -1,1 +1,1 @@
-/usr/bin/c++   -Wall -Werror -std=c++17 -lm -g   CMakeFiles/Celestial.dir/src/main.cpp.o CMakeFiles/Celestial.dir/src/integration.cpp.o  -o Celestial 
+/usr/bin/c++   -Wall -std=c++17 -lm -g   CMakeFiles/Celestial.dir/src/main.cpp.o CMakeFiles/Celestial.dir/src/integration.cpp.o CMakeFiles/Celestial.dir/src/vector.cpp.o CMakeFiles/Celestial.dir/src/menu.cpp.o CMakeFiles/Celestial.dir/src/parser.cpp.o  -o Celestial 

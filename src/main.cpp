@@ -36,24 +36,37 @@ Compile with folowing flags:
 #include "include/planet_data.h"
 #include "include/menu.h"
 #include "include/benchmark.h"
+#include "parser.h"
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
-int main(){
+void Process_Selection_Three(double timestep){
+    two_body_algorithms::f_and_g();
+}
+
+
+int main(int argc, char *argv[]){
+
+    //Using solar system data in planet_data.h for benchmarking
+    /*
+    bodies.push_back(solar_system::sun);
+    bodies.push_back(solar_system::mercury);
+    bodies.push_back(solar_system::venus);
+    bodies.push_back(solar_system::earth);
+    bodies.push_back(solar_system::mars);
+    bodies.push_back(solar_system::saturn);
+    bodies.push_back(solar_system::jupiter);
+    bodies.push_back(solar_system::uranus);
+    bodies.push_back(solar_system::neptune);
+    bodies.push_back(solar_system::pluto);
+    */
+        parse_file();
+        parse_data(argv[1]);
 
 
     number_of_cores();
-    {
-
-        Timer timer;
-        
-        //spawn_menu();
-        Two_Body_Algorithms::F_and_G();
-        //open_files(read,write);//calling the open_files() function
-
-        //close_files(read,write);//calling the close_files() function
-
-    }
+    //spawn_menu();
+    std::cout << "Execution terminated!!" << std::endl;
 
     return 0;
 }

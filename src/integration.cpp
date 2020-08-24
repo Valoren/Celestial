@@ -22,7 +22,10 @@
  *
  */
 
-#include "integration.h"
+#include "include/integration.h"
+#include "structures.h"
+
+#define NUMBER_OF_STEPS 100
 
 using namespace solar_system;
 
@@ -222,51 +225,47 @@ void Orbit_integration::RK4::compute_gravity_step()
     update_location();
 }
 
+void two_body_algorithms::f_and_g(){
 
-
-
-
-void F_and_G(){
-
-    point r{};
-    point v{};
-    double u, z, q, f, g;
-    double F2, F3, F4;
-    double G3, G4;
-    double f_dot, g_dot;
-    double mu = test_object.mass + 1;
-    r.x = f_g_test.location.x;
-    r.y = f_g_test.location.y;
-    r.z = f_g_test.location.z;
-    v.x = f_g_test.velocity.x;
-    v.y = f_g_test.velocity.y;
-    v.z = f_g_test.velocity.z;
-    for(int k = 0; k < NUMBER_OF_STEPS; k++){
-        double t = 0.0;
-        u = mu / (norm(r) * norm(r) * norm(r));
-        z = scalar(r, v)/(norm(r) * norm(r));
-        q = (scalar(r, r)/(norm(r) * norm(r)) - u);
-        F2 = -u/2;
-        F3 = (u * z)/2;
-        F4 = (u/24)*(3 * q - 15 * z *z + u);
-        G3 = -u/6;
-        G4 = (u * z)/4;
-        f = 1 + F2*t*t + F3*t*t*t + F4*t*t*t*t;
-        g = t + G3*t*t*t + G4*t*t*t*t;
-        f_dot = 2*F2*t + 3*F3*t*t + 4*F4*t*t*t;
-        g_dot = 1 + 3*G3*t*t + 4*G4*t*t*t;
-        r.x += f*r.x + g*v.x;
-        r.y += f*r.y + g*v.y;
-        r.z += f*r.z + g*v.z;
-        v.x += f_dot*r.x + g_dot*v.x;
-        v.y += f_dot*r.y + g_dot*v.y;
-        v.z += f_dot*r.z + g_dot*v.z;
-        std::cout << r.x << " " << r.y << " " << r.z << " ";
-        std::cout << v.x << " " << v.y << " " << v.z << std::endl;
-    }
+        point r{};
+        point v{};
+        double u, z, q, f, g;
+        double F2, F3, F4;
+        double G3, G4;
+        double f_dot, g_dot;
+        double mu = test_object.mass + 1;
+        r.x = f_g_test.location.x;
+        r.y = f_g_test.location.y;
+        r.z = f_g_test.location.z;
+        v.x = f_g_test.velocity.x;
+        v.y = f_g_test.velocity.y;
+        v.z = f_g_test.velocity.z;
+        for(int k = 0; k < NUMBER_OF_STEPS; k++){
+            double t = 0.0;
+            u = mu / (norm(r) * norm(r) * norm(r));
+            z = scalar(r, v)/(norm(r) * norm(r));
+            q = (scalar(r, r)/(norm(r) * norm(r)) - u);
+            F2 = -u/2;
+            F3 = (u * z)/2;
+            F4 = (u/24)*(3 * q - 15 * z *z + u);
+            G3 = -u/6;
+            G4 = (u * z)/4;
+            f = 1 + F2*t*t + F3*t*t*t + F4*t*t*t*t;
+            g = t + G3*t*t*t + G4*t*t*t*t;
+            f_dot = 2*F2*t + 3*F3*t*t + 4*F4*t*t*t;
+            g_dot = 1 + 3*G3*t*t + 4*G4*t*t*t;
+            r.x += f*r.x + g*v.x;
+            r.y += f*r.y + g*v.y;
+            r.z += f*r.z + g*v.z;
+            v.x += f_dot*r.x + g_dot*v.x;
+            v.y += f_dot*r.y + g_dot*v.y;
+            v.z += f_dot*r.z + g_dot*v.z;
+            std::cout << r.x << " " << r.y << " " << r.z << " ";
+            std::cout << v.x << " " << v.y << " " << v.z << std::endl;
+        }
 }
 
-void euler_forward(){
+void two_body_algorithms::euler_forward(){
     double r[3], v[3], a[3];
 
     r[0] = test_object.location.x;
@@ -292,3 +291,4 @@ void euler_forward(){
     }
 
 }
+

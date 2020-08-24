@@ -103,19 +103,64 @@ CMakeFiles/Celestial.dir/src/integration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Celestial.dir/src/integration.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miquel/Desktop/Celestial/src/integration.cpp -o CMakeFiles/Celestial.dir/src/integration.cpp.s
 
+CMakeFiles/Celestial.dir/src/vector.cpp.o: CMakeFiles/Celestial.dir/flags.make
+CMakeFiles/Celestial.dir/src/vector.cpp.o: src/vector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miquel/Desktop/Celestial/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Celestial.dir/src/vector.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Celestial.dir/src/vector.cpp.o -c /home/miquel/Desktop/Celestial/src/vector.cpp
+
+CMakeFiles/Celestial.dir/src/vector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Celestial.dir/src/vector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miquel/Desktop/Celestial/src/vector.cpp > CMakeFiles/Celestial.dir/src/vector.cpp.i
+
+CMakeFiles/Celestial.dir/src/vector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Celestial.dir/src/vector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miquel/Desktop/Celestial/src/vector.cpp -o CMakeFiles/Celestial.dir/src/vector.cpp.s
+
+CMakeFiles/Celestial.dir/src/menu.cpp.o: CMakeFiles/Celestial.dir/flags.make
+CMakeFiles/Celestial.dir/src/menu.cpp.o: src/menu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miquel/Desktop/Celestial/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Celestial.dir/src/menu.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Celestial.dir/src/menu.cpp.o -c /home/miquel/Desktop/Celestial/src/menu.cpp
+
+CMakeFiles/Celestial.dir/src/menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Celestial.dir/src/menu.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miquel/Desktop/Celestial/src/menu.cpp > CMakeFiles/Celestial.dir/src/menu.cpp.i
+
+CMakeFiles/Celestial.dir/src/menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Celestial.dir/src/menu.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miquel/Desktop/Celestial/src/menu.cpp -o CMakeFiles/Celestial.dir/src/menu.cpp.s
+
+CMakeFiles/Celestial.dir/src/parser.cpp.o: CMakeFiles/Celestial.dir/flags.make
+CMakeFiles/Celestial.dir/src/parser.cpp.o: src/parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miquel/Desktop/Celestial/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Celestial.dir/src/parser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Celestial.dir/src/parser.cpp.o -c /home/miquel/Desktop/Celestial/src/parser.cpp
+
+CMakeFiles/Celestial.dir/src/parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Celestial.dir/src/parser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miquel/Desktop/Celestial/src/parser.cpp > CMakeFiles/Celestial.dir/src/parser.cpp.i
+
+CMakeFiles/Celestial.dir/src/parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Celestial.dir/src/parser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miquel/Desktop/Celestial/src/parser.cpp -o CMakeFiles/Celestial.dir/src/parser.cpp.s
+
 # Object files for target Celestial
 Celestial_OBJECTS = \
 "CMakeFiles/Celestial.dir/src/main.cpp.o" \
-"CMakeFiles/Celestial.dir/src/integration.cpp.o"
+"CMakeFiles/Celestial.dir/src/integration.cpp.o" \
+"CMakeFiles/Celestial.dir/src/vector.cpp.o" \
+"CMakeFiles/Celestial.dir/src/menu.cpp.o" \
+"CMakeFiles/Celestial.dir/src/parser.cpp.o"
 
 # External object files for target Celestial
 Celestial_EXTERNAL_OBJECTS =
 
 Celestial: CMakeFiles/Celestial.dir/src/main.cpp.o
 Celestial: CMakeFiles/Celestial.dir/src/integration.cpp.o
+Celestial: CMakeFiles/Celestial.dir/src/vector.cpp.o
+Celestial: CMakeFiles/Celestial.dir/src/menu.cpp.o
+Celestial: CMakeFiles/Celestial.dir/src/parser.cpp.o
 Celestial: CMakeFiles/Celestial.dir/build.make
 Celestial: CMakeFiles/Celestial.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miquel/Desktop/Celestial/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Celestial"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miquel/Desktop/Celestial/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Celestial"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Celestial.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

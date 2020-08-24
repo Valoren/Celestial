@@ -43,27 +43,27 @@ struct point
 	double y;
 	double z;
 
-	point operator*(point a)
+	point operator*(point a) const
 	{
 		return point{ x*a.x, y*a.y, z*a.z };
 	}
 
-	point operator*(double a)
+	point operator*(double a) const
 	{
 		return point{ x*a, y*a, z*a };
 	}
 
-	point operator/(point a)
+	point operator/(point a) const
 	{
-		return point{ x/a.x, y/a.y, z/a.z };
+	    return point{ x/a.x, y/a.y, z/a.z };
 	}
 
-	point operator/(double a)
+	point operator/(double a) const
 	{
 		return point{ x / a, y / a, z / a };
 	}
 
-	point operator+(point a)
+	point operator+(point a) const
 	{
 		return point{ x +a.x, y + a.y, z + a.z };
 	}
@@ -82,6 +82,8 @@ struct point
 	}
 };
 
+const point ORIGIN{0.0, 0.0, 0.0};
+
 /*
  *PROCEDURE: norm
  * 
@@ -89,9 +91,7 @@ struct point
  * 
  * RETURNS: norm of Vector(double)
  */
-double norm(point f){
-    return sqrt(f.x * f.x + f.y * f.y + f.z * f.z);
-}
+double norm(point f);
 
 
 /*
@@ -101,11 +101,7 @@ double norm(point f){
  * 
  *RETURNS: scalar product(double)
  */
-double scalar(point a, point g){
-  return a.x * g.x + a.y * g.y + a.z * g.z;
-}
-
-const point ORIGIN{0.0, 0.0, 0.0};
+double scalar(point a, point g);
 
 /*
  * Struct: body

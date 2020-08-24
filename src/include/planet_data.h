@@ -35,7 +35,7 @@
 */
 namespace solar_system
 {
-
+//Real G value for use with consistent universe simulations
 constexpr double G_const = 6.67408e-11; //m3 kg - 1 s - 2
 
 // location(x, y, z), mass, radius, velocity(x, y, z), full_name

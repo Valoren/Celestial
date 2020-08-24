@@ -1,5 +1,5 @@
 /*
- * parser.cpp
+ * parser.h
  * 
  * Copyright 2019 Miquel Bernat Laporta i Granados <mlaportaigranados@gmail.com>
  * 
@@ -20,15 +20,71 @@
  * 
  * 
  */
-#pragma once
-#include <iostream>
-#include <fstream>
 
-//global scope variables
-extern std::string s;
-extern std::ifstream read;
-extern std::ofstream write;
-//Prototype function declarations
-void open_files(std::ifstream&,std::ofstream&);
-void process_data(std::ifstream&,std::ofstream&);
-void close_files(std::ifstream&,std::ofstream&);
+#pragma once
+
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+
+/*
+ *PROCEDURE: check_comment
+ *
+ *DESCRIPTION: Checks for both types of comments,
+ * then passes on control to below comments
+ *
+ *RETURNS: -
+ *
+ */
+void check_comment (char);
+
+/*
+ *PROCEDURE: block_comment
+ *
+ *DESCRIPTION: Handles block or single line comments
+ *
+ *RETURNS: -
+ *
+ */
+void block_comment();
+
+/*
+ *PROCEDURE: single_comment
+ *
+ *DESCRIPTION: Handles single line comments
+ *
+ *RETURNS: -
+ *
+ */
+void single_comment();
+
+/*
+ *PROCEDURE: parse_file
+ *
+ *DESCRIPTION: Parses file and removes comments
+ *
+ *RETURNS: -
+ *
+ */
+void parse_file();
+
+/*
+ *PROCEDURE: initiateSystem
+ *
+ *DESCRIPTION: Parses file and initializes system with received bodies (in C)
+ *
+ *RETURNS: -
+ *
+ */
+void initiateSystem(char * filename);
+
+/*
+ *PROCEDURE: parse_data
+ *
+ *DESCRIPTION: Parses file and initializes system with received bodies (in C++)
+ *
+ *RETURNS: -
+ *
+ */
+void parse_data(const std::string& filename);
+
