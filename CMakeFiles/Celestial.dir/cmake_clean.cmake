@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Celestial.dir/src/integration.cpp.o"
   "CMakeFiles/Celestial.dir/src/main.cpp.o"
+  "CMakeFiles/Celestial.dir/src/matrix.cpp.o"
   "CMakeFiles/Celestial.dir/src/menu.cpp.o"
   "CMakeFiles/Celestial.dir/src/parser.cpp.o"
   "CMakeFiles/Celestial.dir/src/vector.cpp.o"

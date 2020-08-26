@@ -37,6 +37,7 @@ Compile with folowing flags:
 #include "include/menu.h"
 #include "include/benchmark.h"
 #include "parser.h"
+#include "astro_constants.h"
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 

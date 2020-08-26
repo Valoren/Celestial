@@ -11,6 +11,6 @@ set (NBODY_SRCS
         src/integration.cpp
         src/vector.cpp
         src/menu.cpp
-        src/parser.cpp)
+        src/parser.cpp src/include/matrix.h src/matrix.cpp)
 
 add_executable(Celestial ${NBODY_SRCS})

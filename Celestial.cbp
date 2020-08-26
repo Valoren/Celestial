@@ -84,10 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/include/matrix.h">
+			<Option target="Celestial"/>
+		</Unit>
 		<Unit filename="/home/miquel/Desktop/Celestial/src/integration.cpp">
 			<Option target="Celestial"/>
 		</Unit>
 		<Unit filename="/home/miquel/Desktop/Celestial/src/main.cpp">
+			<Option target="Celestial"/>
+		</Unit>
+		<Unit filename="/home/miquel/Desktop/Celestial/src/matrix.cpp">
 			<Option target="Celestial"/>
 		</Unit>
 		<Unit filename="/home/miquel/Desktop/Celestial/src/menu.cpp">

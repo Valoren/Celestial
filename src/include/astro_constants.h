@@ -22,11 +22,11 @@
  *
  */
 
-#ifndef CELESTIAL_ASTRO_CONSTANTS_H
-#define CELESTIAL_ASTRO_CONSTANTS_H
+#pragma once
 
-#endif //CELESTIAL_ASTRO_CONSTANTS_H
+#define _USE_MATH_DEFINES
 
+#include <cmath>
 
 /* Gaussian gravitational constant */
 #define GAUSSK (0.01720209895)
