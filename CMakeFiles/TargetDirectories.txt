@@ -1,3 +1,0 @@
-/home/miquel/Desktop/Celestial/CMakeFiles/rebuild_cache.dir
-/home/miquel/Desktop/Celestial/CMakeFiles/edit_cache.dir
-/home/miquel/Desktop/Celestial/CMakeFiles/Celestial.dir
