@@ -60,19 +60,3 @@ void error_message(const std::string& msg)
 std::cerr<<msg<<std::endl;
 exit(EXIT_FAILURE);
 }
-
-void Process_Selection_One(double timestep){
-    {
-        Timer timer;
-        Orbit_integration::Euler orbit(bodies, 10);
-        run_simulation(orbit, int(1e4), 1);
-    }
-}
-
-void Process_Selection_Two(double timestep){
-    {
-        Timer timer;
-        Orbit_integration::RK4 orbit(bodies, 10);
-        run_simulation(orbit, int(1e4), 1);
-    }
-}

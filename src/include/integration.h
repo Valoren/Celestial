@@ -31,9 +31,6 @@ using namespace solar_system;
 
 static const double dt = 0.00000001;
 
-std::vector<body> bodies;
-
-
 static void record_state(std::vector<body>& bodies)
 {
     for (auto body_iterator = bodies.begin(); body_iterator != bodies.end(); *body_iterator++)
@@ -145,14 +142,3 @@ namespace two_body_algorithms{
     void euler_forward();
 }
 
-template <typename Integrator>
-void run_simulation(Integrator integrator, int iterations, int report_frequency)
-{
-    for (auto i = 0; i < iterations; i++)
-    {
-        if (i % report_frequency == 0)
-            record_state(integrator.get_bodies());
-        integrator.compute_gravity_step();
-    }
-    output_states(integrator.get_bodies());
-}

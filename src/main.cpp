@@ -41,10 +41,35 @@ Compile with folowing flags:
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
+std::vector<body> bodies;
+
+template <typename Integrator>
+void run_simulation(Integrator integrator, int iterations, int report_frequency)
+{
+    for (auto i = 0; i < iterations; i++)
+    {
+        if (i % report_frequency == 0)
+            record_state(integrator.get_bodies());
+        integrator.compute_gravity_step();
+    }
+    output_states(integrator.get_bodies());
+}
+
 void Process_Selection_Three(double timestep){
     two_body_algorithms::f_and_g();
 }
 
+void Process_Selection_One(double timestep){
+    
+        Orbit_integration::Euler orbit(bodies, 10);
+        run_simulation(orbit, int(1e4), 1);
+}
+
+void Process_Selection_Two(double timestep){
+    
+        Orbit_integration::RK4 orbit(bodies, 10);
+        run_simulation(orbit, int(1e4), 1);
+}
 
 int main(int argc, char *argv[]){
 
@@ -61,12 +86,15 @@ int main(int argc, char *argv[]){
     bodies.push_back(solar_system::neptune);
     bodies.push_back(solar_system::pluto);
     */
-        parse_file();
-        parse_data(argv[1]);
+        //parse_file();
+        //parse_data(argv[1]);
 
 
     number_of_cores();
     //spawn_menu();
+    {
+        Timer timer;
+    }
     std::cout << "Execution terminated!!" << std::endl;
 
     return 0;
