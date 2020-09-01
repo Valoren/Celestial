@@ -24,7 +24,6 @@
 
 #include "menu.h"
 #include "integration.h"
-#include "benchmark.h"
 
 void spawn_title(){
     std::cout << "-----------------------------------------\n" << std::endl;

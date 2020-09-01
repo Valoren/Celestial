@@ -71,6 +71,7 @@ Timer::Timer(){
 *DESCRIPTION: Detects system OS and displays number of processing cores aviable on the system
 *Main purpose is for multithreading optimization with OMP library.
 *
+*RETURNS: -
 */
 void number_of_cores()
 {

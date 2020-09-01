@@ -31,6 +31,13 @@ Compile with folowing flags:
 #include <iostream>
 #include <cmath>
 #include <omp.h>
+#include <functional> 
+#include <map>          
+#include <memory>       
+#include <string>      
+#include <sstream>     
+#include <string_view>  
+#include <variant>
 #include "include/structures.h"
 #include "include/integration.h"
 #include "include/planet_data.h"
@@ -41,8 +48,11 @@ Compile with folowing flags:
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
+using namespace std;
+
 std::vector<body> bodies;
 
+//STANDARD INTEGRATOR TEMPLATE
 template <typename Integrator>
 void run_simulation(Integrator integrator, int iterations, int report_frequency)
 {
@@ -55,26 +65,69 @@ void run_simulation(Integrator integrator, int iterations, int report_frequency)
     output_states(integrator.get_bodies());
 }
 
-void Process_Selection_Three(double timestep){
-    two_body_algorithms::f_and_g();
-}
+//STANDARD PARSER TEMPLATE
+template <class Opts>
+struct CmdOpts : Opts
+{
+    using MyProp = std::variant<std::string Opts::*, int Opts::*, double Opts::*, bool Opts::*>;
+    using MyArg = std::pair<std::string, MyProp>;
 
-void Process_Selection_One(double timestep){
-    
-        Orbit_integration::Euler orbit(bodies, 10);
-        run_simulation(orbit, int(1e4), 1);
-}
+    ~CmdOpts() = default;
 
-void Process_Selection_Two(double timestep){
-    
-        Orbit_integration::RK4 orbit(bodies, 10);
-        run_simulation(orbit, int(1e4), 1);
-}
+    Opts parse(int argc, const char* argv[])
+    {
+        vector<string_view> vargv(argv, argv+argc);
+        for (int idx = 0; idx < argc; ++idx)
+            for (auto& cbk : callbacks)
+                cbk.second(idx, vargv);
+
+        return static_cast<Opts>(*this);
+    }
+
+    static std::unique_ptr<CmdOpts> Create(std::initializer_list<MyArg> args)
+    {
+        auto cmdOpts = unique_ptr<CmdOpts>(new CmdOpts());
+        for (auto arg : args) cmdOpts->register_callback(arg);
+        return cmdOpts;
+    }
+
+private:
+    using callback_t = std::function<void(int, const std::vector<std::string_view>&)>;
+    std::map<std::string, callback_t> callbacks;
+
+    CmdOpts() = default;
+    CmdOpts(const CmdOpts&) = delete;
+    CmdOpts(CmdOpts&&) = delete;
+    CmdOpts& operator=(const CmdOpts&) = delete;
+    CmdOpts& operator=(CmdOpts&&) = delete;
+
+    auto register_callback(std::string name, MyProp prop)
+    {
+        callbacks[name] = [this, name, prop](int idx, const vector<string_view>& argv)
+        {
+            if (argv[idx] == name)
+            {
+                visit(
+                    [this, idx, &argv](auto&& arg)
+                    {
+                        if (idx < argv.size() - 1)
+                        {
+                            stringstream value;
+                            value << argv[idx+1];
+                            value >> this->*arg;
+                        }
+                    },
+                    prop);
+            }
+        };
+    };
+
+    auto register_callback(MyArg p) { return register_callback(p.first, p.second); }
+};
 
 int main(int argc, char *argv[]){
 
     //Using solar system data in planet_data.h for benchmarking
-    /*
     bodies.push_back(solar_system::sun);
     bodies.push_back(solar_system::mercury);
     bodies.push_back(solar_system::venus);
@@ -85,15 +138,41 @@ int main(int argc, char *argv[]){
     bodies.push_back(solar_system::uranus);
     bodies.push_back(solar_system::neptune);
     bodies.push_back(solar_system::pluto);
-    */
-        //parse_file();
-        //parse_data(argv[1]);
+    
+    const char *algorithms[3] = {"Euler", "RK4", "Leapfrog"}; 
+    struct MyOpts
+    {
+        std::string AlgorithmOpt{}; //Selects integrator from aviable scheme.
+        int intOpt{}; //Number of integratio steps
+        //double errorOpt{}; //Numerical integration error tolerance
+        bool boolOpt{}; //True/False for Debug flag
+    };
+    //{"-tol", &MyOpts::errorOpt}
+    auto parser = CmdOpts<MyOpts>::Create({
+        {"--integrator", &MyOpts::AlgorithmOpt },
+        {"--steps", &MyOpts::intOpt},
+        {"--DEBUG", &MyOpts::boolOpt}});
 
-
+    auto myopts = parser->parse(argc, argv);
+    /*
+    std::cout << "stringOpt = " << myopts.AlgorithmOpt << std::endl;
+    std::cout << "intOpt = " << myopts.intOpt << std::endl;
+    std::cout << "boolOpt = " << myopts.boolOpt << std::endl;
+    parse_file();
+    parse_data(argv[1]);    
+    spawn_title();
     number_of_cores();
     //spawn_menu();
+    */
     {
         Timer timer;
+        if(myopts.AlgorithmOpt == "RK4"){
+        Orbit_integration::RK4 orbit(bodies, 0.01);
+        run_simulation(orbit, (int)myopts.intOpt, 1);
+        }
+        else{
+            std::cout << "Non defined integrator" << std::endl;
+        }
     }
     std::cout << "Execution terminated!!" << std::endl;
 

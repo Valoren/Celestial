@@ -42,17 +42,28 @@ struct Menu_Option
  * on menu
 *
 */
-void Process_Selection_One();
-void Process_Selection_Two();
-void Process_Selection_Three();
-void Process_Selection_Four();
+void Process_Selection_One(){
+  std::cout << "Caca" << std::endl;
+}
+void Process_Selection_Two(){
+    std::cout << "Caca" << std::endl;
+
+}
+void Process_Selection_Three(){
+    std::cout << "Caca" << std::endl;
+
+}
+void Process_Selection_Four(){
+    std::cout << "Caca" << std::endl;
+
+}
 
 static const Menu_Option main_menu[] =
 {
   {'1', "Euler first order for 2 body systems", Process_Selection_One},
   {'2', "F and G series for 2 body systems", Process_Selection_Two},
   {'3', "Runge Kutta-Fehlberg 5th order", Process_Selection_Two},
-  {'4',"Runge-Kutta 4th order, Process_Selection_Two"}
+  {'4',"Runge-Kutta 4th order", Process_Selection_Two}
 };
 
 /*

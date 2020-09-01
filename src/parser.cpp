@@ -108,7 +108,7 @@ void parse_file(){
 }
 
 void parse_data(const std::string& filename){
-
+    
     int num_bodies;
     std::ifstream fin;
     fin.open("input.txt");
