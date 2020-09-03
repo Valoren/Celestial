@@ -48,10 +48,6 @@ Compile with folowing flags:
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h"
 
-using namespace std;
-
-std::vector<body> bodies;
-
 //STANDARD INTEGRATOR TEMPLATE
 template <typename Integrator>
 void run_simulation(Integrator integrator, int iterations, int report_frequency)
@@ -76,7 +72,7 @@ struct CmdOpts : Opts
 
     Opts parse(int argc, const char* argv[])
     {
-        vector<string_view> vargv(argv, argv+argc);
+        std::vector<std::string_view> vargv(argv, argv+argc);
         for (int idx = 0; idx < argc; ++idx)
             for (auto& cbk : callbacks)
                 cbk.second(idx, vargv);
@@ -86,7 +82,7 @@ struct CmdOpts : Opts
 
     static std::unique_ptr<CmdOpts> Create(std::initializer_list<MyArg> args)
     {
-        auto cmdOpts = unique_ptr<CmdOpts>(new CmdOpts());
+        auto cmdOpts = std::unique_ptr<CmdOpts>(new CmdOpts());
         for (auto arg : args) cmdOpts->register_callback(arg);
         return cmdOpts;
     }
@@ -103,7 +99,7 @@ private:
 
     auto register_callback(std::string name, MyProp prop)
     {
-        callbacks[name] = [this, name, prop](int idx, const vector<string_view>& argv)
+        callbacks[name] = [this, name, prop](int idx, const std::vector<std::string_view>& argv)
         {
             if (argv[idx] == name)
             {
@@ -112,7 +108,7 @@ private:
                     {
                         if (idx < argv.size() - 1)
                         {
-                            stringstream value;
+                            std::stringstream value;
                             value << argv[idx+1];
                             value >> this->*arg;
                         }
@@ -126,6 +122,10 @@ private:
 };
 
 int main(int argc, char *argv[]){
+    
+    std::vector<body> bodies;
+    const char *algorithms[3] = {"Euler", "RK4", "Leapfrog"}; 
+
 
     //Using solar system data in planet_data.h for benchmarking
     bodies.push_back(solar_system::sun);
@@ -139,12 +139,11 @@ int main(int argc, char *argv[]){
     bodies.push_back(solar_system::neptune);
     bodies.push_back(solar_system::pluto);
     
-    const char *algorithms[3] = {"Euler", "RK4", "Leapfrog"}; 
     struct MyOpts
     {
         std::string AlgorithmOpt{}; //Selects integrator from aviable scheme.
         int intOpt{}; //Number of integratio steps
-        //double errorOpt{}; //Numerical integration error tolerance
+        double errorOpt{}; //Numerical integration error tolerance
         bool boolOpt{}; //True/False for Debug flag
     };
     //{"-tol", &MyOpts::errorOpt}
@@ -158,13 +157,15 @@ int main(int argc, char *argv[]){
     std::cout << "stringOpt = " << myopts.AlgorithmOpt << std::endl;
     std::cout << "intOpt = " << myopts.intOpt << std::endl;
     std::cout << "boolOpt = " << myopts.boolOpt << std::endl;
-    parse_file();
-    parse_data(argv[1]);    
-    spawn_title();
-    number_of_cores();
-    //spawn_menu();
     */
-    {
+
+   //Main program execution
+   spawn_title();
+   number_of_cores();
+   //spawn_menu();
+   //parse_file();
+   //parse_data(argv[1]);
+   {
         Timer timer;
         if(myopts.AlgorithmOpt == "RK4"){
         Orbit_integration::RK4 orbit(bodies, 0.01);

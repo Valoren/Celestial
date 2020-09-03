@@ -59,3 +59,19 @@ void error_message(const std::string& msg)
 std::cerr<<msg<<std::endl;
 exit(EXIT_FAILURE);
 }
+
+void Process_Selection_One(){
+  std::cout << "Caca" << std::endl;
+}
+void Process_Selection_Two(){
+    std::cout << "Caca" << std::endl;
+
+}
+void Process_Selection_Three(){
+    std::cout << "Caca" << std::endl;
+
+}
+void Process_Selection_Four(){
+    std::cout << "Caca" << std::endl;
+
+}

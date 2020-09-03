@@ -42,21 +42,10 @@ struct Menu_Option
  * on menu
 *
 */
-void Process_Selection_One(){
-  std::cout << "Caca" << std::endl;
-}
-void Process_Selection_Two(){
-    std::cout << "Caca" << std::endl;
-
-}
-void Process_Selection_Three(){
-    std::cout << "Caca" << std::endl;
-
-}
-void Process_Selection_Four(){
-    std::cout << "Caca" << std::endl;
-
-}
+void Process_Selection_One();
+void Process_Selection_Two();
+void Process_Selection_Three();
+void Process_Selection_Four();
 
 static const Menu_Option main_menu[] =
 {
