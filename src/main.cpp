@@ -145,12 +145,17 @@ int main(int argc, char *argv[]){
         int intOpt{}; //Number of integratio steps
         double errorOpt{}; //Numerical integration error tolerance
         bool boolOpt{}; //True/False for Debug flag
+        bool boolOpt_test{}; //True/False Solar system test flag
+        std::string filenameOpt{}; //File name with system data
     };
     //{"-tol", &MyOpts::errorOpt}
     auto parser = CmdOpts<MyOpts>::Create({
         {"--integrator", &MyOpts::AlgorithmOpt },
         {"--steps", &MyOpts::intOpt},
-        {"--DEBUG", &MyOpts::boolOpt}});
+        {"--DEBUG", &MyOpts::boolOpt},
+        {"--test", &MyOpts::boolOpt},
+        {"--error", &MyOpts::errorOpt},
+        {"--file", &MyOpts::filenameOpt}});
 
     auto myopts = parser->parse(argc, argv);
     /*
@@ -167,9 +172,17 @@ int main(int argc, char *argv[]){
    //parse_data(argv[1]);
    {
         Timer timer;
+        if(myopts.filenameOpt == ""){
+            std::cout << "Initiating system with data file" << myopts.filenameOpt << std::endl;
+
+        }
         if(myopts.AlgorithmOpt == "RK4"){
-        Orbit_integration::RK4 orbit(bodies, 0.01);
-        run_simulation(orbit, (int)myopts.intOpt, 1);
+            Orbit_integration::RK4 orbit(bodies, 0.01);
+            run_simulation(orbit, (int)myopts.intOpt, 1);
+        }
+        else if(myopts.AlgorithmOpt == "Euler"){
+            Orbit_integration::Euler orbit(bodies, 0.01);
+            run_simulation(orbit, (int)myopts.intOpt,1);
         }
         else{
             std::cout << "Non defined integrator" << std::endl;

@@ -73,6 +73,7 @@ Timer::Timer(){
 *
 *RETURNS: -
 */
+extern "C"{
 void number_of_cores()
 {
   long nprocs = -1;
@@ -87,7 +88,7 @@ GetSystemInfo(&info);
 #endif
 #endif
 #ifdef _SC_NPROCESSORS_ONLN
-printf("Detected GNU-Linux system");
+printf("Detected GNU-Linux system\n");
   nprocs = sysconf(_SC_NPROCESSORS_ONLN);
   if (nprocs < 1)
   {
@@ -108,4 +109,5 @@ strerror (errno));
   fprintf(stderr, "Could not determine number of CPUs");
   exit (EXIT_FAILURE);
 #endif
+}
 }
