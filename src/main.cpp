@@ -43,7 +43,7 @@ Compile with folowing flags:
 #include "include/planet_data.h"
 #include "include/menu.h"
 #include "include/benchmark.h"
-#include "parser.h"
+#include "include/parser.h"
 #include "astro_constants.h"
 //#include "include/astro_epochs.h"
 //#include "matplotlibcpp.h" //experimental
@@ -167,6 +167,9 @@ int main(int argc, char *argv[]){
    //Main program execution
    spawn_title();
    number_of_cores();
+   if(argc < 5){
+       print_cmd_options();
+   }
    //spawn_menu();
    //parse_file();
    //parse_data(argv[1]);

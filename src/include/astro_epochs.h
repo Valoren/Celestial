@@ -32,8 +32,6 @@
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
-#include "support.h"
-
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <stdarg.h>

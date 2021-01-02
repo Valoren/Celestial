@@ -47,7 +47,7 @@ void Process_Selection_Two();
 void Process_Selection_Three();
 void Process_Selection_Four();
 
-static const Menu_Option main_menu[] =
+static Menu_Option main_menu[] =
 {
   {'1', "Euler first order for 2 body systems", Process_Selection_One},
   {'2', "F and G series for 2 body systems", Process_Selection_Two},
@@ -79,3 +79,11 @@ void spawn_menu();
 *
 */
 void error_message(const std::string& msg);
+
+/*
+ *PROCEDURE: print_cmd_options
+ *
+ *DESCRIPTION: Prints cmd options aviable for program execution(data file, used algorithm, steps, time etc...)
+ *
+ */
+void print_cmd_options();

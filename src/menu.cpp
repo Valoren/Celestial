@@ -60,6 +60,21 @@ std::cerr<<msg<<std::endl;
 exit(EXIT_FAILURE);
 }
 
+void print_cmd_options(){
+    std::cout << "Usage: Celestial [input_file] [algorithm] [steps] [output_file]\n" << std::endl;
+    std::cout << "---------------------------------------------------------------\n" << std::endl;
+    std::cout << "Implemented algorithms:\n" << std::endl;
+    std::cout << "-RK4 - Runge-Kutta 4th order\n" << std::endl;
+    std::cout << "-Euler - Standard Euler integration\n" << std::endl;
+    std::cout << "-f_and_g - F and G series expansion(for 2 body systems only!)" << std::endl;
+    std::cout << "-taylor - Taylor series expansion(for 2 body systems only!)" << std::endl;
+    std::cout << "---------------------------------------------------------------\n" << std::endl;
+    std::cout << "Extra flags:" << std::endl;
+    std::cout << "-test - Uses default solar system testing system" << std::endl;
+    
+    exit(EXIT_FAILURE);
+}
+
 void Process_Selection_One(){
   std::cout << "Caca" << std::endl;
 }
