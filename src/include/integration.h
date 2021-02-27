@@ -139,6 +139,22 @@ namespace Orbit_integration {
 */
 namespace two_body_algorithms{
     void f_and_g();
-    void euler_forward();
+    void euler_forward(double dt);
+    void leapfrog(double dt, double integration_time);
+    double e_out(point a, point b); //Final total energy
+    double ekin(point p1);
+    double epot(point p2);
 }
 
+/*
+*NAMESPACE: revised_algorithms
+*
+*DESCRIPTION: Alternative implementations
+*
+*/
+namespace revised_algorithms{
+  
+   void euler_def();
+   void hermite();
+   void RK4();
+}

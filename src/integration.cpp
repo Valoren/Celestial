@@ -1,5 +1,5 @@
 /*
- * integration.h
+ * integration.cpp
  *
  * Copyright 2019 Miquel Bernat Laporta i Granados
  * <mlaportaigranados@gmail.com>
@@ -225,6 +225,43 @@ void Orbit_integration::RK4::compute_gravity_step()
     update_location();
 }
 
+/*
+ *PROCEDURE: ekin
+ *
+ *DESCRIPTION: Calculates kinetic energy on m=1 scale
+ *
+ *RETURNS: double
+ *
+ */
+double two_body_algorithms::ekin(point p1){
+    return 0.5 * norm(p1) * norm(p1);
+}
+
+/*
+ *PROCEDURE:epot
+ *
+ *DESCRIPTION: Calculates potential energy on m=1 scale
+ *
+ *RETURNS: double
+ *
+ */
+double two_body_algorithms::epot(point p2){
+    return 1.0 / norm(p2);
+}
+
+/*
+ *PROCEDURE: e_out
+ *
+ *DESCRIPTION: Calculates total energy on the system
+ *
+ *RETURNS: double
+ *
+ */
+double two_body_algorithms::e_out(point a, point b){
+    return ekin(a)+epot(b);
+}
+
+//NOT PROPERLY TESTED
 void two_body_algorithms::f_and_g(){
 
         point r{};
@@ -265,9 +302,8 @@ void two_body_algorithms::f_and_g(){
         }
 }
 
-void two_body_algorithms::euler_forward(){
+void two_body_algorithms::euler_forward(double dt){
     double r[3], v[3], a[3];
-
     r[0] = test_object.location.x;
     r[1] = test_object.location.y;
     r[2] = test_object.location.z;
@@ -292,3 +328,60 @@ void two_body_algorithms::euler_forward(){
 
 }
 
+/*
+*PROCEDURE: leapfrog
+*
+*DESCRIPTION: Integrates postion using leapfrog algorithm
+*
+*/
+void two_body_algorithms::leapfrog(double dt, double integration_time){
+    point r{};
+    point v{};
+    point a{};
+    double dt_out = 0.01;
+    double t_out = dt_out;
+    r.x = f_g_test.location.x;
+    r.y = f_g_test.location.y;
+    r.z = f_g_test.location.z;
+    v.x = f_g_test.velocity.x;
+    v.y = f_g_test.velocity.y;
+    v.z = f_g_test.velocity.z;
+    ekin(v);
+    epot(v);
+    double r_init=norm(r);
+    double r2= r.x * r.x + r.y * r.y + r.z * r.z; //Initial r without the norm(r_init)^2 
+    
+    //Initial accelerations
+    a.x= -r.x / (r_init* r2);
+    a.y= -r.y / (r_init* r2);
+    a.z= -r.x / (r_init* r2);
+
+    //Main integration loop
+    for(double t=0; t < integration_time; t += dt){
+        v.x += 0.5 * a.x * dt;  
+        v.y += 0.5 * a.y * dt;
+        v.z += 0.5 * a.z * dt;
+        r.x += v.x * dt;
+        r.y += v.y * dt;
+        r.z += v.z * dt; 
+        r2= r.x * r.x + r.y * r.y + r.z * r.z;
+        a.x= -r.x / (sqrt(r2)* r2);
+        a.y= -r.y / (sqrt(r2)* r2);
+        a.z= -r.x / (sqrt(r2)* r2);
+        v.x += 0.5 * a.x * dt;  
+        v.y += 0.5 * a.y * dt;
+        v.z += 0.5 * a.z * dt;
+        if(t >= dt_out){
+            std::cout << r.x << " " << r.y << " " << r.z << " ";
+            std::cout << v.x << " " << v.y << " " << v.z << std::endl;
+            t_out += dt_out;
+        }
+    }
+    ekin = 0.5 * (v.x * v.x + v.y * v.y + v.z * v.z);
+    epot = -1.0 / norm(r);
+    eout
+    std::cout<< "Final total energy:" << 
+
+
+
+}

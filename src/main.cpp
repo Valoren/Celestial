@@ -173,6 +173,22 @@ int main(int argc, char *argv[]){
    //spawn_menu();
    //parse_file();
    //parse_data(argv[1]);
+   else{
+       two_body_algorithms::euler_forward(0.001);
+   }
+
+
+
+
+
+
+
+
+
+
+
+   /*
+   else{
    {
         Timer timer;
         if(myopts.filenameOpt == ""){
@@ -194,4 +210,6 @@ int main(int argc, char *argv[]){
     std::cout << "Execution terminated!!" << std::endl;
 
     return 0;
+}
+*/
 }
