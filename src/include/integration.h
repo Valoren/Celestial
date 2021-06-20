@@ -29,6 +29,37 @@
 
 using namespace solar_system;
 
+//Functions declarations used on Piet-Hut Hermite integrator implementation
+void correct_step(real pos[][NDIM], real vel[][NDIM],
+                  const real acc[][NDIM], const real jerk[][NDIM],
+                  const real old_pos[][NDIM], const real old_vel[][NDIM],
+                  const real old_acc[][NDIM], const real old_jerk[][NDIM],
+                  int n, real dt);
+void evolve(const real mass[], real pos[][NDIM], real vel[][NDIM],
+            int n, real & t, real dt_param, real dt_dia, real dt_out,
+            real dt_tot, bool init_out, bool x_flag);
+void evolve_step(const real mass[], real pos[][NDIM], real vel[][NDIM],
+                 real acc[][NDIM], real jerk[][NDIM], int n, real & t,
+                 real dt, real & epot, real & coll_time);
+void get_acc_jerk_pot_coll(const real mass[], const real pos[][NDIM],
+                           const real vel[][NDIM], real acc[][NDIM],
+                           real jerk[][NDIM], int n, real & epot,
+                           real & coll_time);
+void get_snapshot(real mass[], real pos[][NDIM], real vel[][NDIM], int n);
+void predict_step(real pos[][NDIM], real vel[][NDIM],
+                  const real acc[][NDIM], const real jerk[][NDIM],
+                  int n, real dt);
+void put_snapshot(const real mass[], const real pos[][NDIM],
+                  const real vel[][NDIM], int n, real t);
+bool read_options(int argc, char *argv[], real & dt_param, real & dt_dia,
+                  real & dt_out, real & dt_tot, bool & i_flag, bool & x_flag);
+void write_diagnostics(const real mass[], const real pos[][NDIM],
+                       const real vel[][NDIM], const real acc[][NDIM],
+                       const real jerk[][NDIM], int n, real t, real epot,
+                       int nsteps, real & einit, bool init_flag,
+                       bool x_flag);
+
+
 static const double dt = 0.00000001;
 
 static void record_state(std::vector<body>& bodies)

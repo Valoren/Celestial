@@ -29,13 +29,62 @@
 
 using namespace solar_system;
 
-/*
+/*-----------------------------------------------------------------------------
+ *PROCEDURE:  get_snapshot  
+ *
+ *DESCRIPTION: reads a single snapshot from the input stream cin.
+ * note: in this implementation, only the particle data are read in, and it
+ *        is left to the main program to first read particle number and time
+ *
+ *RETURNS: -
+ *-----------------------------------------------------------------------------
+ */
+
+void get_snapshot(real mass[], real pos[][NDIM], real vel[][NDIM], int n)
+{
+    for (int i = 0; i < n ; i++){
+        cin >> mass[i];                       // mass of particle i
+        for (int k = 0; k < NDIM; k++)
+            cin >> pos[i][k];                 // position of particle i
+        for (int k = 0; k < NDIM; k++)
+            cin >> vel[i][k];                 // velocity of particle i
+    }
+}
+
+/*-----------------------------------------------------------------------------
+ *PROCEDURE:  put_snapshot  
+ *
+ *DESCRIPTION: writes a single snapshot on the output stream cout.
+ * note: unlike get_snapshot(), put_snapshot handles particle number and time
+ *
+ *RETURNS: -
+ *-----------------------------------------------------------------------------
+ */
+void put_snapshot(const real mass[], const real pos[][NDIM],
+                  const real vel[][NDIM], int n, real t)
+{
+    cout.precision(16);                       // full double precision
+
+    cout << n << endl;                        // N, total particle number
+    cout << t << endl;                        // current time
+    for (int i = 0; i < n ; i++){
+        cout << mass[i];                      // mass of particle i
+        for (int k = 0; k < NDIM; k++)
+            cout << ' ' << pos[i][k];         // position of particle i
+        for (int k = 0; k < NDIM; k++)
+            cout << ' ' << vel[i][k];         // velocity of particle i
+        cout << endl;
+    }
+}
+
+
+/*----------------------------------------------------------------------------
  *PROCEDURE: calculate_single_body_acceleration
  *
  *DESCRIPTION: Calculates acceleration vector for a single object for Euler algorithm
  *
  *RETURNS: Acceleration vector
- *
+ *----------------------------------------------------------------------------
  */
 point Orbit_integration::Euler::calculate_single_body_acceleration(int body_index)
 {

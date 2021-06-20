@@ -32,6 +32,8 @@
 #include <algorithm>
 #include <iomanip>
 
+const int NDIM = 3;
+
 /*
  * 	Struct: Point
  * 
