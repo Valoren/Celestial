@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -fopenmp  -rdynamic CMakeFiles/nbody.dir/simulation.cpp.o CMakeFiles/nbody.dir/orbit_integration.cpp.o  -o nbody 

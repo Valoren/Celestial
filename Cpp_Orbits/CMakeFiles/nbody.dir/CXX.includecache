@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/miquel/Desktop/Cpp_Orbits/src/datastructures.h
+string
+-
+vector
+-
+
+/home/miquel/Desktop/Cpp_Orbits/src/orbit_integration.h
+iostream
+-
+fstream
+-
+datastructures.h
+/home/miquel/Desktop/Cpp_Orbits/src/datastructures.h
+
+/home/miquel/Desktop/Cpp_Orbits/src/simulation.cpp
+orbit_integration.h
+/home/miquel/Desktop/Cpp_Orbits/src/orbit_integration.h
+omp.h
+-
+iostream
+-
+
