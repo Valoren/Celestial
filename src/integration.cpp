@@ -43,11 +43,11 @@ using namespace solar_system;
 void get_snapshot(real mass[], real pos[][NDIM], real vel[][NDIM], int n)
 {
     for (int i = 0; i < n ; i++){
-        cin >> mass[i];                       // mass of particle i
+        std::cin >> mass[i];                       // mass of particle i
         for (int k = 0; k < NDIM; k++)
-            cin >> pos[i][k];                 // position of particle i
+            std::cin >> pos[i][k];                 // position of particle i
         for (int k = 0; k < NDIM; k++)
-            cin >> vel[i][k];                 // velocity of particle i
+            std::cin >> vel[i][k];                 // velocity of particle i
     }
 }
 
@@ -63,17 +63,17 @@ void get_snapshot(real mass[], real pos[][NDIM], real vel[][NDIM], int n)
 void put_snapshot(const real mass[], const real pos[][NDIM],
                   const real vel[][NDIM], int n, real t)
 {
-    cout.precision(16);                       // full double precision
+    std::cout.precision(16);                       // full double precision
 
-    cout << n << endl;                        // N, total particle number
-    cout << t << endl;                        // current time
+    std::cout << n << std::endl;                        // N, total particle number
+    std::cout << t << std::endl;                        // current time
     for (int i = 0; i < n ; i++){
-        cout << mass[i];                      // mass of particle i
+        std::cout << mass[i];                      // mass of particle i
         for (int k = 0; k < NDIM; k++)
-            cout << ' ' << pos[i][k];         // position of particle i
+            std::cout << ' ' << pos[i][k];         // position of particle i
         for (int k = 0; k < NDIM; k++)
-            cout << ' ' << vel[i][k];         // velocity of particle i
-        cout << endl;
+            std::cout << ' ' << vel[i][k];         // velocity of particle i
+        std::cout << std::endl;
     }
 }
 

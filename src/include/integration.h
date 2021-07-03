@@ -27,6 +27,7 @@
 #include "structures.h"
 #include "planet_data.h"
 
+typedef double real;
 using namespace solar_system;
 
 //Functions declarations used on Piet-Hut Hermite integrator implementation
